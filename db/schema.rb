@@ -11,49 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151205030701) do
+ActiveRecord::Schema.define(version: 20160130225104) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "games", force: :cascade do |t|
-    t.string   "champion",    limit: 255
-    t.string   "role",        limit: 255
-    t.decimal  "kills"
-    t.decimal  "deaths"
-    t.decimal  "assists"
-    t.integer  "creep_score"
-    t.integer  "gold"
-    t.boolean  "result"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "masteries", force: :cascade do |t|
+    t.integer "riot_id",           limit: 8
+    t.string  "name"
+    t.string  "mastery_tree_name"
+    t.text    "descriptions",                default: [], array: true
+    t.string  "prereq"
+    t.integer "ranks"
+    t.string  "image_full"
+    t.string  "image_group"
+    t.string  "image_sprite"
+    t.integer "image_h"
+    t.integer "image_w"
+    t.integer "image_x"
+    t.integer "image_y"
   end
 
   create_table "summoners", force: :cascade do |t|
     t.string   "name"
-    t.integer  "profileIconId"
-    t.integer  "revisionDate",  limit: 8
-    t.integer  "summonerLevel"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string   "username",               limit: 255
-    t.string   "email",                  limit: 255, default: "", null: false
-    t.string   "encrypted_password",     limit: 255, default: "", null: false
-    t.string   "reset_password_token",   limit: 255
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                      default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",     limit: 255
-    t.string   "last_sign_in_ip",        limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+    t.integer  "profile_icon_id"
+    t.integer  "revision_date"
+    t.integer  "summoner_level"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end
