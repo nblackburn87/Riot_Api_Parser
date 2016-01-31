@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160130225104) do
+ActiveRecord::Schema.define(version: 20160131212035) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,20 @@ ActiveRecord::Schema.define(version: 20160130225104) do
     t.text    "descriptions",                default: [], array: true
     t.string  "prereq"
     t.integer "ranks"
+    t.string  "image_full"
+    t.string  "image_group"
+    t.string  "image_sprite"
+    t.integer "image_h"
+    t.integer "image_w"
+    t.integer "image_x"
+    t.integer "image_y"
+  end
+
+  create_table "runes", force: :cascade do |t|
+    t.integer "riot_id",      limit: 8
+    t.string  "name"
+    t.string  "description"
+    t.integer "rune_tier"
     t.string  "image_full"
     t.string  "image_group"
     t.string  "image_sprite"
