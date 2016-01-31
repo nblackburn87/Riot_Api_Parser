@@ -35,6 +35,7 @@ class SummonersController < ApplicationController
 
   private
     def set_summoner
+      binding.pry
       @summoner = Summoner.find(params[:id])
     end
 

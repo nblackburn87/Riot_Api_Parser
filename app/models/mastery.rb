@@ -5,7 +5,7 @@ class Mastery < ActiveRecord::Base
 
   logger ::Logger.new("httparty.log"), :debug, :curl
 
-  def self.rebuild_from_api!
+  def self.rebuild_masteries_from_api!
     response = get("/static-data/na/v1.2/mastery?api_key=#{Rails.application.secrets.riot_api_key}&masteryListData=all")
 
     if response.success?

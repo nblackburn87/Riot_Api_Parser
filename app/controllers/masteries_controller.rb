@@ -23,6 +23,7 @@ class MasteriesController < ApplicationController
 
   private
     def set_mastery
+      binding.pry
       @mastery = Mastery.find(params[:id])
     end
 
